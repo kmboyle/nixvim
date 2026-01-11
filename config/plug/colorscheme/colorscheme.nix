@@ -4,6 +4,9 @@ let
 in
 	{
 	colorschemes = {
+		catppuccin = {
+			enable = false;
+		};
 		base16 = {
 			enable = true;
 			setUpBar = true;
