@@ -5,10 +5,10 @@ in
 	{
 	colorschemes = {
 		catppuccin = {
-			enable = false;
+			enable = true;
 		};
 		base16 = {
-			enable = true;
+			enable = false;
 			setUpBar = true;
 			colorscheme = import ../../colors/${config.theme}.nix { };
 			settings = {
