@@ -129,7 +129,7 @@
           timeout_ms = 500;
           lsp_fallback = true;
         };
-        formatersByFileType = {
+        formattersByFileType = {
           nix = [ "nixfmt" ];
         };
       };
