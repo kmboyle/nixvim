@@ -35,12 +35,12 @@ With the input added you can reference it directly.
 }
 ```
 
-The binary built by nixvim is already named as nvim so you can call it just like you normally would.
+The binary built by `nixvim` is already named as `nvim` so you can call it just like you normally would.
 
-Installing as an overlay
-Another method is to overlay your custom build over neovim from nixpkgs.
+## Installing as an overlay
+Another method is to overlay your custom build over `neovim` from `nixpkgs`.
 
-This method is less straight-forward but allows you to install neovim like you normally would. With this method you would just install neovim in your configuration (home.packges = with pkgs; [ neovim ]), but you replace neovim in pkgs with your derivation from nixvim.
+This method is less straight-forward but allows you to install `neovim` like you normally would. With this method you would just install `neovim` in your configuration `(home.packages = with pkgs; [ neovim ])`, but you replace `neovim` in `pkgs` with your derivation from `nixvim`.
 
 ```nix
 {
