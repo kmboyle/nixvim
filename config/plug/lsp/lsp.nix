@@ -50,6 +50,12 @@
           enable = true;
           autostart = true;
         };
+        angularls = {
+          enable = true;
+        };
+        ts_ls = {
+          enable = true;
+        };
         #cmake = {
         #	enable = false;
         #};
