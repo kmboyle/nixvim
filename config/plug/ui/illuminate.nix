@@ -1,12 +1,14 @@
 {
   plugins.illuminate = {
     enable = true;
-    underCursor = false;
-    filetypesDenylist = [
-      "Outline"
-      "alpha"
-      "harpoon"
-      "reason"
-    ];
+    settings = {
+      under_cursor = false;
+      filetypes_denylist = [
+        "Outline"
+        "alpha"
+        "harpoon"
+        "reason"
+      ];
+    };
   };
 }
