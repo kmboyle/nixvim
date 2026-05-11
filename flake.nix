@@ -11,7 +11,7 @@
   let
     systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
     forEachSystem = f: nixpkgs.lib.genAttrs systems (system: f system);
-    pkgsFor = system: import nixpkgs { inherit system; };
+    pkgsFor = system: import nixpkgs { inherit system; config.allowUnfree = true; };
     nixvimFor = system: nixvim.legacyPackages.${system}; 
     nvimFor = system:
       let
