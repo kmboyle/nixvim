@@ -23,7 +23,7 @@
 				"v"
 			];
 			key = "<leader>e";
-			action = ":Neotree<CR>"; # :set autochdir<CR>
+			action = ":Neotree toggle<CR>";
 			options = {
 				silent = true;
 				desc = "Tree";
