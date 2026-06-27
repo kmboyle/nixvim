@@ -100,10 +100,48 @@ in
 	    };
 	};
 
+    extraConfigLua = ''
+      _G.ChangeDirPicker = function()
+        local cwd = vim.fn.getcwd()
+        local parent = vim.fn.fnamemodify(cwd, ":h")
+        Snacks.picker.pick({
+          title = "Change Directory",
+          finder = function()
+            local items = {}
+            local i = 1
+            if parent ~= cwd then
+              table.insert(items, { text = "../  (" .. parent .. ")", file = parent, idx = i })
+              i = i + 1
+            end
+            local dirs = vim.fn.systemlist(
+              "fd --type d --hidden --exclude .git --absolute-path . " .. vim.fn.shellescape(cwd)
+            )
+            for _, dir in ipairs(dirs) do
+              table.insert(items, { text = dir, file = dir, idx = i })
+              i = i + 1
+            end
+            return items
+          end,
+          confirm = function(picker, item)
+            picker:close()
+            if item then
+              vim.fn.chdir(item.file)
+              vim.notify("cwd: " .. vim.fn.getcwd())
+            end
+          end,
+        })
+      end
+    '';
+
     keymaps =
 	(lib.mkIf (config.plugins.snacks.enable && lib.hasAttr "picker" config.plugins.snacks.settings))
 	(
 	    [
+		{
+		    mode = "n"; key = "<leader>fc";
+		    action = ''<cmd>lua ChangeDirPicker()<cr>'';
+		    options = { desc = "Change directory"; };
+		}
 		{
 		    mode = "n"; key = "<leader>fa";
 		    action = ''<cmd>lua Snacks.picker.autocmds()<cr>'';

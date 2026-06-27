@@ -39,6 +39,7 @@
 		./plug/utils/comment.nix
 		./plug/utils/trouble.nix
 		./plug/utils/neo-tree.nix
+		./plug/utils/oil.nix
 		./plug/utils/nvim-autopairs.nix
 		./plug/utils/undotree.nix
 		./plug/utils/compile.nix

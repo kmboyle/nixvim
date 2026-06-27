@@ -1,5 +1,19 @@
 {
 	autoCmd = [
+		{
+			event = "VimLeave";
+			callback = { __raw = ''
+				function()
+					if vim.g.cwd_file and vim.g.cwd_file ~= "" then
+						local f = io.open(vim.g.cwd_file, "w")
+						if f then
+							f:write(vim.fn.getcwd())
+							f:close()
+						end
+					end
+				end
+			''; };
+		}
 		# Vertically center document when entering insert mode
 		{
 			event = "InsertEnter";
