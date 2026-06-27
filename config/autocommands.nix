@@ -4,13 +4,24 @@
 			event = "VimLeave";
 			callback = { __raw = ''
 				function()
-					if vim.g.cwd_file and vim.g.cwd_file ~= "" then
-						local f = io.open(vim.g.cwd_file, "w")
+					local cwd_file = os.getenv("NVIM_CWD_FILE")
+					if cwd_file and cwd_file ~= "" then
+						local f = io.open(cwd_file, "w")
 						if f then
 							f:write(vim.fn.getcwd())
 							f:close()
 						end
 					end
+				end
+			''; };
+		}
+		{
+			event = "BufEnter";
+			pattern = "oil://*";
+			callback = { __raw = ''
+				function()
+					local dir = require("oil").get_current_dir()
+					if dir then vim.fn.chdir(dir) end
 				end
 			''; };
 		}
