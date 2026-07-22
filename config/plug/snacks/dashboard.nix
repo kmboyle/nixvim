@@ -63,7 +63,7 @@ in
 				sections = [
 					{
 						section = "terminal";
-						cmd = "${lib.getExe text}; sleep .4";
+						cmd = "${lib.getExe text}; sleep infinity";
 						height = 25;
 						padding = 1;
 						align = "left";
